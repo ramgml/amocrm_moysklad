@@ -3,7 +3,7 @@ class BaseEntity(object):
         return self.__slots__
 
     def __repr__(self):
-        fields = ((field, getattr(self, field)) for field in dir(self))
+        fields = ((field, getattr(self, field, None)) for field in self.get_fields())
         return '\n'.join((f'{key}: {str(value)}' for key, value in fields))
 
 

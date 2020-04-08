@@ -1,11 +1,4 @@
-from amocrm.entities import ProductsCatalog, CustomField, BaseEntity
-
-
-def product_catalog_deserializer(response):
-    product_catalog = ProductsCatalog()
-    product_catalog.is_enabled = response.get('is_enabled')
-    product_catalog.catalog_id = response.get('catalog_id')
-    return product_catalog
+from amocrm.entities import BaseEntity
 
 
 def serialize_entity(entity: BaseEntity):
