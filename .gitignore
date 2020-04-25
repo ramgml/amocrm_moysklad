@@ -375,7 +375,6 @@ pip-selfcheck.json
 
 ### Python template
 # Byte-compiled / optimized / DLL files
-__pycache__/
 *.py[cod]
 *$py.class
 
@@ -383,7 +382,6 @@ __pycache__/
 *.so
 
 # Distribution / packaging
-.Python
 build/
 develop-eggs/
 dist/
@@ -432,7 +430,6 @@ coverage.xml
 *.pot
 
 # Django stuff:
-*.log
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
@@ -479,7 +476,6 @@ celerybeat.pid
 
 # Environments
 .env
-.venv
 env/
 venv/
 ENV/
