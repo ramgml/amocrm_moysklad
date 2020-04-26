@@ -7,5 +7,11 @@ def serialize_entity(entity: Entity):
         value = getattr(entity, field, None)
         if value is None:
             continue
-        result[field] = value
+        result[to_camelcase(field)] = value
     return result
+
+
+def to_camelcase(name: str):
+    words = name.split('_')
+    titled = [word.title() for word in words[1:]]
+    return ''.join([words[0].lower()] + titled)

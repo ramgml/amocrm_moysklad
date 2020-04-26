@@ -7,54 +7,29 @@ class MoySklad:
     def __init__(self, login, password):
         self._http_client = HttpClient(login, password)
 
-    def get_assortment(self, **kwargs):
-        """
-        param: limit
-        number (optional) Default: 25 Example: 100
-        Максимальное количество сущностей для извлечения.
+    def get_assortment(self,
+                       limit: int = 100,
+                       offset: int = None,
+                       stockstore: str = None,
+                       stockmoment: str = None,
+                       scope: str = None,
+                       stockmode: str = None,
+                       quantitymode: str = None):
+        parameters = {}
+        if limit is not None:
+            parameters['limit'] = limit
+        if offset is not None:
+            parameters['offset'] = offset
+        if stockstore is not None:
+            parameters['stockstore'] = stockstore
+        if stockmoment is not None:
+            parameters['stockmoment'] = stockmoment
+        if scope is not None:
+            parameters['scope'] = scope
+        if stockmode is not None:
+            parameters['quantitymode'] = quantitymode
 
-        Допустимые значения 1 - 100
-
-        param: offset
-        number (optional) Default: 0 Example: 40
-        Отступ в выдаваемом списке сущностей
-
-        param: stockstore
-        string (optional)
-        Ссылка на склад, по которому нужно получить остатки. Формат - URI.
-
-        param: stockmoment
-        string (optional)
-        Момент времени, на который нужно вывести остатки.
-        Формат строки: YYYY-MM-DD HH:MM:SS.
-
-        param: scope
-        string (optional)
-        Параметр фильтрации по типу объектов. Принимает одно из значений:
-
-            product - будут выведены только товары
-            variant - будут выведены товары и модификации
-            consignment - будут выведены все сущности (аналогично отсутствию параметра)
-
-
-        :param stockmode
-        string (optional)
-        Вид Остатка. Параметр совместим только с параметрами: limit, offset, stockstore, stockmoment, quantitymode.
-        Если указаны параметры отличные от совместимых в ответ вернется ошибка с кодом 1069.
-        Допустимые значения [all, positiveOnly, negativeOnly, empty, nonEmpty]
-        По умолчанию параметр stockmode имеет значение all. Если вы хотите увидеть объекты с нулевым или отрицательным
-        остатком, нужно указать соответствующее значение данного параметра
-
-        :param quantitymode
-        string (optional)
-        Фильтр по полю Доступно. Параметр совместим только с параметрами: limit, offset, stockstore, stockmoment,
-        stockmode. Если указаны параметры отличные от совместимых в ответ вернется ошибка с кодом 1069.
-        Допустимые значения [all, positiveOnly, negativeOnly, empty, nonEmpty]
-        По умолчанию параметр quantitymode имеет значение all. Если вы хотите увидеть объекты с нулевым или
-        отрицательным значением поля Доступно, нужно указать соответствующее значение данного параметра.
-        """
-
-        return self._http_client.send(GET, f'/entity/assortment', parameters=kwargs)
+        return self._http_client.send(GET, f'/entity/assortment', parameters=parameters)
 
     def list(self, entity_name: str, search=None, filters=None, order=None, expand=None):
         parameters = {}
@@ -68,7 +43,7 @@ class MoySklad:
             parameters['expand'] = expand
         return self._http_client.send(GET, f'/entity/{entity_name}', parameters=parameters)
 
-    def get_by_id(self, entity_name: str, uuid, expand=None):
+    def get_by_id(self, entity_name: str, uuid: str, expand=None):
         parameters = {}
         if expand is not None:
             parameters['expand'] = expand
@@ -78,9 +53,9 @@ class MoySklad:
         data = serialize_entity(entity)
         return self._http_client.send(POST, f'/entity/{entity.entity_name}', payload=data)
 
-    def update(self, entity: Entity, uuid):
+    def update(self, entity: Entity, uuid: str):
         data = serialize_entity(entity)
         return self._http_client.send(PUT, f'/entity/{entity.entity_name}/{uuid}', payload=data)
 
-    def delete(self, entity_name: str, uuid):
+    def delete(self, entity_name: str, uuid: str):
         return self._http_client.send(DELETE, f'/entity/{entity_name}/{uuid}')

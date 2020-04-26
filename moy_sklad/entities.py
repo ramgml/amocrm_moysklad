@@ -10,7 +10,7 @@ class Product(Entity):
     __slots__ = (
         "meta",
         "id",
-        "accountId",
+        "account_id",
         "owner",
         "shared",
         "group",
@@ -18,23 +18,23 @@ class Product(Entity):
         "updated",
         "name",
         "code",
-        "externalCode",
+        "external_code",
         "archived",
-        "pathName",
+        "path_name",
         "uom",
-        "minPrice",
-        "salePrices",
-        "buyPrice",
-        "paymentItemType",
-        "discountProhibited",
+        "min_price",
+        "sale_prices",
+        "buy_price",
+        "payment_item_type",
+        "discount_prohibited",
         "country",
         "article",
-        "trackingType",
+        "tracking_type",
         "weight",
         "volume",
         "barcodes",
-        "modificationsCount",
-        "isSerialTrackable"
+        "modifications_count",
+        "is_serial_trackable"
     )
 
 
@@ -43,21 +43,21 @@ class Counterparty(Entity):
     __slots__ = (
         "meta",
         "id",
-        "accountId",
+        "account_id",
         "owner",
         "shared",
         "group",
         "version",
         "updated",
         "name",
-        "externalCode",
+        "external_code",
         "archived",
         "created",
-        "companyType",
+        "company_type",
         "accounts",
         "tags",
         "notes",
-        "salesAmount"
+        "sales_amount"
     )
 
 
@@ -66,25 +66,25 @@ class Organization(Entity):
     __slots__ = (
         "meta",
         "id",
-        "accountId",
+        "account_id",
         "owner",
         "shared",
         "group",
         "version",
         "updated",
         "name",
-        "externalCode",
+        "external_code",
         "archived",
         "created",
-        "companyType",
-        "legalTitle",
+        "company_type",
+        "legal_title",
         "email",
         "accounts",
-        "isEgaisEnable",
-        "payerVat",
+        "is_egais_enable",
+        "payer_vat",
         "director",
-        "chiefAccountant",
-        "trackingContractDate"
+        "chief_accountant",
+        "tracking_contract_date"
     )
 
 
@@ -93,14 +93,14 @@ class CustomerOrder(Entity):
     __slots__ = (
         "meta",
         "id",
-        "accountId",
+        "account_id",
         "owner",
         "shared",
         "group",
         "version",
         "updated",
         "name",
-        "externalCode",
+        "external_code",
         "moment",
         "applicable",
         "rate",
@@ -112,11 +112,11 @@ class CustomerOrder(Entity):
         "documents",
         "created",
         "positions",
-        "vatEnabled",
-        "vatIncluded",
-        "vatSum",
-        "payedSum",
-        "shippedSum",
-        "invoicedSum",
-        "reservedSum"
+        "vat_enabled",
+        "vat_included",
+        "vat_sum",
+        "payed_sum",
+        "shipped_sum",
+        "invoiced_sum",
+        "reserved_sum"
     )
