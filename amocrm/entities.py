@@ -49,7 +49,7 @@ class CatalogElement(BaseEntity):
 
 class CustomField(BaseEntity):
     __slots__ = (
-        'id'
+        'id',
     )
 
     type = 'custom_fields'
